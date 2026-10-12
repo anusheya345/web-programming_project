@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RepairTrack - Modern Repair Service Tracker</title>
+  <meta name="description" content="Track your device repair in real time, view diagnostic cost estimates, and manage repair workflows.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'/></svg>">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Navigation Header
+       ========================================================================= -->
+  <header class="app-header">
+    <div class="container header-container">
+      <a href="#home" class="brand-logo" data-nav="home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <span>Repair<span class="track">Track</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li>
+            <a href="#home" class="nav-link active" data-view="home" data-nav="home">
+              <svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#book" class="nav-link" data-view="book" data-nav="book">
+              <svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+              Book a Repair
+            </a>
+          </li>
+          <li>
+            <a href="#track" class="nav-link" data-view="track" data-nav="track">
+              <svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              Track Repair
+            </a>
+          </li>
+          <li>
+            <a href="#history" class="nav-link" data-view="history" data-nav="history">
+              <svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 8v4l3 3"/>
+                <circle cx="12" cy="12" r="9"/>
+              </svg>
+              Repair History
+            </a>
+          </li>
+          <li>
+            <a href="#admin" class="nav-link admin-pill" data-view="admin" data-nav="admin">
+              <svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              Admin Portal
+              <span class="admin-badge">Demo</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="mobile-toggle" id="mobileNavToggle" aria-label="Toggle Navigation Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       Main Application Views Container
+       ========================================================================= -->
+  <main class="app-main">
+
+    <!-- -----------------------------------------------------------------------
+         VIEW A: HOME PAGE
+         ----------------------------------------------------------------------- -->
+    <section id="view-home" class="app-view active-view">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-content">
+              <div class="hero-pill">
+                <svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+                Fast, Reliable & Transparent Repairs
+              </div>
+              <h1 class="hero-title">
+                Track Your Repair. <br>
+                <span class="highlight">Stay Updated.</span>
+              </h1>
+              <p class="hero-subtitle">
+                Effortlessly register device issues, view estimated diagnostic costs, and monitor 
+                your technician's progress in real time using your unique Repair ID.
+              </p>
+              <div class="hero-actions">
+                <button class="btn btn-primary" data-nav="book">
+                  <svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"/>
+                  </svg>
+                  Book a Repair
+                </button>
+                <button class="btn btn-secondary" data-nav="track">
+                  <svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                  </svg>
+                  Track Repair
+                </button>
+              </div>
+            </div>
+
+            <!-- Hero Quick Tracker Box -->
+            <div class="hero-tracker-card">
+              <div class="tracker-card-header">
+                <h3>Quick Status Check</h3>
+                <p>Have a repair ticket? Look up your status instantly.</p>
+              </div>
+              <form id="heroTrackForm" class="hero-track-form">
+                <div class="input-with-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                  </svg>
+                  <input type="text" id="heroTrackInput" class="form-input" placeholder="e.g. RT-1001" autocomplete="off" required>
+                </div>
+                <button type="submit" class="btn btn-navy" style="width:100%">
+                  Look Up Repair Status
+                </button>
+                <div class="quick-demo-ids">
+                  <span>Quick Demo:</span>
+                  <span class="demo-chip" data-id="RT-1001">RT-1001</span>
+                  <span class="demo-chip" data-id="RT-1002">RT-1002</span>
+                  <span class="demo-chip" data-id="RT-1005">RT-1005 (Overdue)</span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Benefits Section -->
+      <section class="section-padding">
+        <div class="container">
+          <div class="section-heading">
+            <span class="section-tag">Why Choose Us</span>
+            <h2 class="section-title">Built for Trust, Speed, and Complete Clarity</h2>
+            <p>Every step of the repair workflow is tracked transparently from initial bench diagnosis to pickup.</p>
+          </div>
+
+          <div class="benefits-grid">
+            <div class="benefit-card">
+              <div class="benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <h3>Certified Technicians</h3>
+              <p>Experienced repair engineers skilled in micro-soldering, OEM screen replacements, and motherboard diagnostics.</p>
+            </div>
+
+            <div class="benefit-card">
+              <div class="benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <h3>Real-Time Timeline</h3>
+              <p>Follow a 5-stage live status tracker. See exactly when parts are ordered, installed, and quality checked.</p>
+            </div>
+
+            <div class="benefit-card">
+              <div class="benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="1" x2="12" y2="23"/>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+              </div>
+              <h3>Transparent Pricing</h3>
+              <p>Clear diagnostic cost estimates upfront. No unexpected hidden fees or surprise bench charges.</p>
+            </div>
+
+            <div class="benefit-card">
+              <div class="benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
+              <h3>90-Day Warranty</h3>
+              <p>All repaired hardware and replacement components are backed by our full comprehensive warranty.</p>
+            </div>
+          </div>
+
+          <!-- Service Stats Banner -->
+          <div class="stats-banner">
+            <div class="container">
+              <div class="stats-grid">
+                <div class="stat-item">
+                  <h3>99.4%</h3>
+                  <p>Successful Repairs</p>
+                </div>
+                <div class="stat-item">
+                  <h3>2,500+</h3>
+                  <p>Devices Restored</p>
+                </div>
+                <div class="stat-item">
+                  <h3>&lt; 24 Hrs</h3>
+                  <p>Average Turnaround</p>
+                </div>
+                <div class="stat-item">
+                  <h3>4.9 / 5</h3>
+                  <p>Customer Rating</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Repair Process Section -->
+      <section class="section-padding process-section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="section-tag">Simple 4-Step Journey</span>
+            <h2 class="section-title">How RepairTrack Works</h2>
+            <p>From the moment you register your device to collecting it fully restored, here is our streamlined process.</p>
+          </div>
+
+          <div class="process-steps-grid">
+            <div class="process-step-item">
+              <div class="step-number-bubble">1</div>
+              <h4>Book &amp; Submit</h4>
+              <p>Fill out the simple intake form with your device brand and issue description to receive your unique Repair ID.</p>
+            </div>
+            <div class="process-step-item">
+              <div class="step-number-bubble">2</div>
+              <h4>Bench Diagnosis</h4>
+              <p>Technicians inspect hardware traces and provide a transparent estimated cost and expected completion date.</p>
+            </div>
+            <div class="process-step-item">
+              <div class="step-number-bubble">3</div>
+              <h4>Precision Repair</h4>
+              <p>Replacement components are installed and verified with comprehensive stress and diagnostic testing.</p>
+            </div>
+            <div class="process-step-item">
+              <div class="step-number-bubble">4</div>
+              <h4>Pickup &amp; Warranty</h4>
+              <p>You receive an instant notification that your device is ready for pickup with your 90-day service guarantee.</p>
+            </div>
+          </div>
+
+          <div style="text-align:center;margin-top:3.5rem;">
+            <button class="btn btn-primary" data-nav="book">
+              Get Started — Book a Repair Now
+            </button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         VIEW B: BOOK A REPAIR
+         ----------------------------------------------------------------------- -->
+    <section id="view-book" class="app-view">
+      <div class="container">
+        <div class="page-header">
+          <h1>Book a Device Repair</h1>
+          <p>Submit your repair request online in under a minute. You'll receive a unique Repair ID to track progress live.</p>
+        </div>
+
+        <div class="form-wrapper-card">
+          <div class="form-card-top">
+            <div>
+              <h2>Device Intake Form</h2>
+              <p class="form-hint">Please provide accurate contact and device symptoms</p>
+            </div>
+            <button type="button" class="btn btn-secondary btn-sm" id="demoFillBtn" title="Click to fill form with realistic mock data">
+              <svg style="width:14px;height:14px;color:var(--blue-600)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+              Fill with Demo Data
+            </button>
+          </div>
+
+          <form id="repairBookingForm" novalidate>
+            <!-- Customer Details -->
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="customerName" class="form-label">Full Name <span class="req">*</span></label>
+                <input type="text" id="customerName" class="form-input" placeholder="e.g. Jordan Rivera" required>
+                <span class="form-error-msg">Please enter a valid customer name.</span>
+              </div>
+              <div class="form-group">
+                <label for="phoneNumber" class="form-label">Phone Number <span class="req">*</span></label>
+                <input type="tel" id="phoneNumber" class="form-input" placeholder="e.g. 555-678-1234" required>
+                <span class="form-error-msg">Please enter a valid phone number.</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="emailAddress" class="form-label">Email Address <span class="req">*</span></label>
+              <input type="email" id="emailAddress" class="form-input" placeholder="e.g. jordan.rivera@example.com" required>
+              <span class="form-hint">Status notifications and quotes will be sent to this email address.</span>
+              <span class="form-error-msg">Please enter a valid email address.</span>
+            </div>
+
+            <!-- Device Details -->
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="deviceType" class="form-label">Device Type <span class="req">*</span></label>
+                <select id="deviceType" class="form-select" required>
+                  <option value="" disabled selected>Select device type...</option>
+                  <option value="Mobile">Mobile Phone</option>
+                  <option value="Laptop">Laptop / Notebook</option>
+                  <option value="Tablet">Tablet / iPad</option>
+                  <option value="Desktop">Desktop PC / Mac</option>
+                  <option value="Other">Other Electronics</option>
+                </select>
+                <span class="form-error-msg">Please select a device type.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="deviceBrand" class="form-label">Brand &amp; Model <span class="req">*</span></label>
+                <input type="text" id="deviceBrand" class="form-input" placeholder="e.g. Apple iPhone 14 Pro, Dell XPS 15" required>
+                <span class="form-error-msg">Please enter the device brand and model.</span>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="problemCategory" class="form-label">Problem Category <span class="req">*</span></label>
+                <select id="problemCategory" class="form-select" required>
+                  <option value="" disabled selected>Select category...</option>
+                  <option value="Screen Damage">Screen / OLED Damage</option>
+                  <option value="Battery / Power">Battery / Power Failure</option>
+                  <option value="Liquid Damage">Liquid / Water Spill</option>
+                  <option value="Port / Charging">Charging Port / Cable Issue</option>
+                  <option value="Software / OS">Software / Boot Loop / Virus</option>
+                  <option value="Hardware / Motherboard">Hardware / Motherboard / RAM</option>
+                  <option value="Audio / Camera">Speaker / Mic / Camera Issue</option>
+                  <option value="Other">Other / Unsure</option>
+                </select>
+                <span class="form-error-msg">Please select a problem category.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="preferredDate" class="form-label">Preferred Drop-Off Date <span class="req">*</span></label>
+                <input type="date" id="preferredDate" class="form-input" required>
+                <span class="form-error-msg">Please choose a valid drop-off date.</span>
+              </div>
+            </div>
+
+            <!-- Problem Description -->
+            <div class="form-group">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <label for="problemDescription" class="form-label">Problem Description &amp; Symptoms <span class="req">*</span></label>
+                <span id="descCharCount" class="form-hint">0 characters</span>
+              </div>
+              <textarea id="problemDescription" class="form-textarea" rows="4" placeholder="Describe what occurred, any strange sounds, error messages, or previous repair history..." required></textarea>
+              <span class="form-error-msg">Please enter at least 10 characters describing the issue.</span>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="booking-actions">
+              <button type="reset" class="btn btn-secondary">
+                Reset Form
+              </button>
+              <button type="submit" id="submitBookingBtn" class="btn btn-primary">
+                <svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Submit Repair Request
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Success Modal -->
+    <div id="bookingSuccessModal" class="modal-overlay">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3>Repair Request Registered</h3>
+          <button class="modal-close-btn" onclick="closeBookingModal()">✕</button>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+          <div class="success-icon-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <h2>Booking Confirmed!</h2>
+          <p>Your service ticket has been created and our diagnostic bench has been notified.</p>
+
+          <div class="success-id-box">
+            <div class="id-label">Your Unique Repair ID</div>
+            <div class="id-value">
+              <span id="modalRepairId">RT-1006</span>
+              <button type="button" class="copy-id-btn" id="copyRepairIdBtn" title="Copy to clipboard">
+                <svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                </svg>
+                Copy
+              </button>
+            </div>
+            <small style="color:var(--grey-500)">Save this ID to check your live repair status anytime.</small>
+          </div>
+
+          <div style="background:var(--grey-100);padding:1rem;border-radius:var(--radius-md);text-align:left;font-size:0.9rem;margin-bottom:1.5rem;">
+            <p><strong>Customer:</strong> <span id="modalCustomer"></span></p>
+            <p><strong>Device:</strong> <span id="modalDevice"></span></p>
+            <p><strong>Issue:</strong> <span id="modalProblem"></span></p>
+            <p><strong>Initial Status:</strong> <span class="badge badge-received">Request Received</span></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="modalBookAnotherBtn">
+            Book Another
+          </button>
+          <button type="button" class="btn btn-primary" id="modalTrackNowBtn">
+            Track This Repair Now →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- -----------------------------------------------------------------------
+         VIEW C: TRACK REPAIR
+         ----------------------------------------------------------------------- -->
+    <section id="view-track" class="app-view">
+      <div class="container">
+        <div class="page-header">
+          <h1>Track Repair Status</h1>
+          <p>Enter your unique Repair ID to see real-time progress, technician diagnostic notes, and estimated costs.</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="tracker-search-bar">
+          <form id="trackingSearchForm" class="search-input-group">
+            <input type="text" id="trackingIdInput" placeholder="Enter Repair ID (e.g. RT-1001)" autocomplete="off">
+            <button type="submit" class="btn btn-primary">
+              <svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              Track Status
+            </button>
+          </form>
+          <div class="quick-demo-ids" style="justify-content:center;margin-top:0.75rem;">
+            <span>Sample Records:</span>
+            <span class="demo-chip" data-id="RT-1001">RT-1001 (In Repair)</span>
+            <span class="demo-chip" data-id="RT-1002">RT-1002 (Ready)</span>
+            <span class="demo-chip" data-id="RT-1003">RT-1003 (Diagnosis)</span>
+            <span class="demo-chip" data-id="RT-1005">RT-1005 (Overdue Demo)</span>
+          </div>
+        </div>
+
+        <!-- Tracking Initial Empty State -->
+        <div id="trackingEmptyState" class="empty-state-card" style="max-width:720px;margin:0 auto 4rem;">
+          <div class="empty-state-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          <h3>Ready to track your device</h3>
+          <p>Enter your unique Repair ID above or select one of the sample records to see live progress.</p>
+        </div>
+
+        <!-- Tracking Not Found State -->
+        <div id="trackingNotFoundState" class="empty-state-card" style="max-width:720px;margin:0 auto 4rem;display:none;">
+          <div class="empty-state-icon" style="background:#fee2e2;color:#ef4444;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          </div>
+          <h3>No Record Found for "<span id="searchedIdPlaceholder"></span>"</h3>
+          <p>Please double-check your Repair ID format (e.g. RT-1001) or check the Repair History catalog.</p>
+          <button class="btn btn-secondary btn-sm" data-nav="history">View Repair History</button>
+        </div>
+
+        <!-- Tracking Result Card -->
+        <div id="trackingResultArea" class="tracker-result-area" style="display:none;">
+          
+          <!-- Overdue Warning Alert -->
+          <div id="trackOverdueBanner" class="overdue-alert-banner" style="display:none;">
+            <div class="alert-icon">
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Service Alert: Delayed Past Estimated Completion Date</h4>
+              <p>This repair is currently past its expected target date (<strong id="overdueDateText"></strong>). Our technicians are actively prioritizing this unit to finalize quality testing.</p>
+            </div>
+          </div>
+
+          <!-- Printable Ticket Card Container -->
+          <div class="tracking-main-card" id="printableTicket">
+            <!-- Card Header -->
+            <div class="card-top-status-bar">
+              <div class="status-bar-left">
+                <h2>
+                  Repair Ticket: <span id="trackResultId">RT-1001</span>
+                </h2>
+                <p>Created on <span id="trackResultCreated"></span> • RepairTrack Official Service Record</p>
+              </div>
+              <div>
+                <span id="trackResultStatusBadge" class="badge">In Repair</span>
+              </div>
+            </div>
+
+            <!-- 5-Stage Visual Progress Timeline -->
+            <div class="timeline-container">
+              <div class="timeline-steps">
+                <div class="timeline-progress-bar" id="timelineProgressBar" style="width:50%;"></div>
+
+                <!-- Stage 1 -->
+                <div class="timeline-step" id="timelineStep-0">
+                  <div class="step-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </div>
+                  <div class="step-title">1. Request Received</div>
+                  <div class="step-desc">Intake logged in system</div>
+                </div>
+
+                <!-- Stage 2 -->
+                <div class="timeline-step" id="timelineStep-1">
+                  <div class="step-marker">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </div>
+                  <div class="step-title">2. Diagnosis</div>
+                  <div class="step-desc">Bench inspection &amp; quote</div>
+                </div>
+
+                <!-- Stage 3 -->
+                <div class="timeline-step" id="timelineStep-2">
+                  <div class="step-marker">
+                    <span>3</span>
+                  </div>
+                  <div class="step-title">3. In Repair</div>
+                  <div class="step-desc">Component replacement</div>
+                </div>
+
+                <!-- Stage 4 -->
+                <div class="timeline-step" id="timelineStep-3">
+                  <div class="step-marker">
+                    <span>4</span>
+                  </div>
+                  <div class="step-title">4. Ready for Pickup</div>
+                  <div class="step-desc">Quality tested &amp; boxed</div>
+                </div>
+
+                <!-- Stage 5 -->
+                <div class="timeline-step" id="timelineStep-4">
+                  <div class="step-marker">
+                    <span>5</span>
+                  </div>
+                  <div class="step-title">5. Completed</div>
+                  <div class="step-desc">Collected by customer</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Repair Information Details Grid -->
+            <div class="tracking-details-content">
+              <div class="tracking-info-grid">
+                <div class="info-card-block">
+                  <div class="info-label">Customer Name</div>
+                  <div class="info-val" id="trackResultCustomer">Alex Morgan</div>
+                </div>
+                <div class="info-card-block">
+                  <div class="info-label">Contact Details</div>
+                  <div class="info-val" id="trackResultContact" style="font-size:0.95rem;">555-234-8901</div>
+                </div>
+                <div class="info-card-block">
+                  <div class="info-label">Device &amp; Model</div>
+                  <div class="info-val" id="trackResultDevice">Apple iPhone 14 Pro</div>
+                </div>
+                <div class="info-card-block">
+                  <div class="info-label">Problem Category</div>
+                  <div class="info-val" id="trackResultCategory">Screen Damage</div>
+                </div>
+                <div class="info-card-block">
+                  <div class="info-label">Estimated Repair Cost</div>
+                  <div class="info-val cost-val" id="trackResultCost">$180.00</div>
+                </div>
+                <div class="info-card-block">
+                  <div class="info-label">Expected Completion</div>
+                  <div class="info-val" id="trackResultExpectedDate">Oct 12, 2026</div>
+                </div>
+              </div>
+
+              <!-- Problem Description Box -->
+              <div class="problem-box-block">
+                <div class="info-label">Reported Symptoms</div>
+                <p id="trackResultDescription" style="color:var(--navy-800);font-size:0.95rem;"></p>
+              </div>
+
+              <!-- Live Technician Notes Box -->
+              <div class="notes-box-block" id="trackResultTechNotesBlock">
+                <div class="info-label">Technician Workbench Notes</div>
+                <p class="notes-text" id="trackResultTechNotes"></p>
+              </div>
+
+              <!-- Bottom Actions -->
+              <div class="tracking-bottom-actions">
+                <button class="btn btn-secondary btn-sm" id="printTicketBtn">
+                  <svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 6 2 18 2 18 9"/>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                    <rect x="6" y="14" width="12" height="8"/>
+                  </svg>
+                  Print Repair Ticket
+                </button>
+                <div style="font-size:0.85rem;color:var(--grey-500)">
+                  Questions? Call support at <strong>(555) 019-2834</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         VIEW D: ADMIN DASHBOARD
+         ----------------------------------------------------------------------- -->
+    <section id="view-admin" class="app-view">
+      <div class="container">
+        <!-- 1. Admin Login Screen -->
+        <div id="adminLoginSection" class="admin-login-wrapper">
+          <div class="card" style="padding:2.5rem;">
+            <div style="text-align:center;margin-bottom:1.5rem;">
+              <div style="width:52px;height:52px;background:var(--navy-900);color:white;border-radius:var(--radius-md);display:inline-flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+                <svg style="width:26px;height:26px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+              </div>
+              <h2>Admin Operations Login</h2>
+              <p>Sign in to manage repair tickets, edit costs, and post technician workbench notes.</p>
+            </div>
+
+            <!-- College Project Demo Notice -->
+            <div class="demo-login-notice">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              <div>
+                <strong>College Project Prototype Auth</strong>
+                <div>This authentication is a simulated demonstration for academic evaluation and is stored locally in the browser.</div>
+              </div>
+            </div>
+
+            <form id="adminLoginForm">
+              <div class="form-group">
+                <label for="adminUsername" class="form-label">Username</label>
+                <input type="text" id="adminUsername" class="form-input" value="admin" required>
+              </div>
+              <div class="form-group">
+                <label for="adminPassword" class="form-label">Password</label>
+                <input type="password" id="adminPassword" class="form-input" value="admin123" required>
+              </div>
+              <button type="submit" class="btn btn-navy" style="width:100%;margin-bottom:0.75rem;">
+                Sign In to Dashboard
+              </button>
+              <button type="button" id="quickDemoLoginBtn" class="btn btn-primary" style="width:100%;">
+                ⚡ 1-Click Fast Demo Login
+              </button>
+            </form>
+
+            <div class="demo-credentials-box">
+              Demo Credentials: Username: <code>admin</code> | Password: <code>admin123</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Admin Portal (when authenticated) -->
+        <div id="adminPortalSection" style="display:none;">
+          <div class="admin-portal-header">
+            <div>
+              <h1>Admin Management Dashboard</h1>
+              <p>Manage customer tickets, update diagnostic stages, adjust costs, and log technician notes.</p>
+            </div>
+            <div class="admin-header-actions">
+              <button class="btn btn-secondary btn-sm" id="resetDemoDataBtn" title="Reset dataset to initial 5 demo cases">
+                <svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="1 4 1 10 7 10"/>
+                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                </svg>
+                Reset Demo Data
+              </button>
+              <button class="btn btn-outline-danger btn-sm" id="adminLogoutBtn">
+                <svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                  <polyline points="16 17 21 12 16 7"/>
+                  <line x1="21" y1="12" x2="9" y2="12"/>
+                </svg>
+                Sign Out
+              </button>
+            </div>
+          </div>
+
+          <!-- Metrics Cards -->
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-data">
+                <h4>Total Requests</h4>
+                <div class="metric-num" id="metricTotalRequests">0</div>
+              </div>
+              <div class="metric-icon-box metric-icon-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-data">
+                <h4>Pending Intake</h4>
+                <div class="metric-num" id="metricPendingRequests">0</div>
+              </div>
+              <div class="metric-icon-box metric-icon-amber">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-data">
+                <h4>In Progress</h4>
+                <div class="metric-num" id="metricInProgress">0</div>
+              </div>
+              <div class="metric-icon-box metric-icon-purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-data">
+                <h4>Completed / Ready</h4>
+                <div class="metric-num" id="metricCompleted">0</div>
+              </div>
+              <div class="metric-icon-box metric-icon-green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table Search & Filter Bar -->
+          <div class="table-filter-bar">
+            <div class="filter-left-group">
+              <div class="input-with-icon" style="width:100%">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"/>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input type="text" id="adminSearchInput" class="form-input" placeholder="Search by ID, customer name, device...">
+              </div>
+            </div>
+
+            <div class="filter-right-group">
+              <select id="adminStatusFilter" class="form-select" style="width:auto">
+                <option value="ALL">All Statuses</option>
+                <option value="Request Received">Request Received</option>
+                <option value="Diagnosis">Diagnosis</option>
+                <option value="In Repair">In Repair</option>
+                <option value="Ready for Pickup">Ready for Pickup</option>
+                <option value="Completed">Completed</option>
+              </select>
+
+              <select id="adminDeviceFilter" class="form-select" style="width:auto">
+                <option value="ALL">All Devices</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Laptop">Laptop</option>
+                <option value="Tablet">Tablet</option>
+                <option value="Desktop">Desktop</option>
+                <option value="Other">Other</option>
+              </select>
+
+              <span id="adminTableCount" style="font-size:0.85rem;color:var(--grey-500);font-weight:600;"></span>
+            </div>
+          </div>
+
+          <!-- Data Table -->
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Repair ID</th>
+                  <th>Customer Info</th>
+                  <th>Device &amp; Category</th>
+                  <th>Status</th>
+                  <th>Cost</th>
+                  <th>Target Date</th>
+                  <th style="text-align:right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminTableBody">
+                <!-- Dynamically rendered via admin.js -->
+              </tbody>
+            </table>
+
+            <div id="adminTableEmpty" class="empty-state-card" style="display:none;padding:3rem 1rem;border:none;">
+              <h3>No repair records found</h3>
+              <p>Try clearing your search query or reset the demo records filter.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Admin Edit Modal -->
+    <div id="adminEditModal" class="modal-overlay">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 id="editModalTitle">Manage Repair Ticket</h3>
+          <button class="modal-close-btn" id="closeEditModalBtn">✕</button>
+        </div>
+        <form id="adminEditForm">
+          <div class="modal-body">
+            <div style="background:var(--grey-100);padding:1rem;border-radius:var(--radius-md);margin-bottom:1.5rem;font-size:0.9rem;">
+              <p><strong>Customer:</strong> <span id="editCustomerName"></span></p>
+              <p><strong>Device:</strong> <span id="editDeviceSummary"></span></p>
+              <p><strong>Reported Issue:</strong> <span id="editDescriptionText" style="color:var(--navy-600)"></span></p>
+            </div>
+
+            <!-- Status selector -->
+            <div class="form-group">
+              <label for="editStatusSelect" class="form-label">Repair Status <span class="req">*</span></label>
+              <select id="editStatusSelect" class="form-select" required>
+                <option value="Request Received">1. Request Received</option>
+                <option value="Diagnosis">2. Diagnosis</option>
+                <option value="In Repair">3. In Repair</option>
+                <option value="Ready for Pickup">4. Ready for Pickup</option>
+                <option value="Completed">5. Completed</option>
+              </select>
+              <span class="form-hint">Changing this stage immediately updates customer tracking and timeline.</span>
+            </div>
+
+            <!-- Cost & Completion Date -->
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="editCostInput" class="form-label">Estimated Cost ($)</label>
+                <input type="number" id="editCostInput" class="form-input" placeholder="e.g. 150" step="0.01" min="0">
+                <span class="form-hint">Leave blank if pending diagnosis</span>
+              </div>
+
+              <div class="form-group">
+                <label for="editExpectedDate" class="form-label">Expected Completion Date</label>
+                <input type="date" id="editExpectedDate" class="form-input">
+                <span class="form-hint">Triggers overdue alert if past date</span>
+              </div>
+            </div>
+
+            <!-- Technician Notes -->
+            <div class="form-group">
+              <label for="editTechNotes" class="form-label">Technician Workbench Notes</label>
+              <textarea id="editTechNotes" class="form-textarea" rows="3" placeholder="Enter diagnostic findings, parts ordered, test results..."></textarea>
+              <span class="form-hint">Visible to customer on their tracking page.</span>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="cancelEditModalBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Admin Delete Confirmation Modal -->
+    <div id="adminDeleteModal" class="modal-overlay">
+      <div class="modal-box" style="max-width:460px;">
+        <div class="modal-header">
+          <h3 style="color:#dc2626;">Confirm Ticket Deletion</h3>
+          <button class="modal-close-btn" onclick="closeDeleteModal()">✕</button>
+        </div>
+        <div class="modal-body" style="text-align:center;padding:1.75rem;">
+          <div style="width:56px;height:56px;background:#fee2e2;color:#dc2626;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+            <svg style="width:28px;height:28px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            </svg>
+          </div>
+          <h4>Delete Repair Ticket <span id="deleteTargetId" style="font-family:monospace;color:#2563eb;"></span>?</h4>
+          <p style="margin-top:0.5rem;font-size:0.9rem;">
+            Customer: <strong id="deleteTargetCustomer"></strong><br>
+            This action permanently removes the record from LocalStorage.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">Cancel</button>
+          <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Yes, Delete Record</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- -----------------------------------------------------------------------
+         VIEW E: REPAIR HISTORY
+         ----------------------------------------------------------------------- -->
+    <section id="view-history" class="app-view">
+      <div class="container">
+        <div class="page-header">
+          <h1>Repair Request Catalog</h1>
+          <p>Browse current and completed service tickets. Filter by repair stage or search by device model.</p>
+        </div>
+
+        <div class="history-card-container">
+          <!-- Filters & Search -->
+          <div style="margin-bottom:1.5rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+            <div class="history-filter-nav" style="margin-bottom:0">
+              <button class="history-tab active" data-status="ALL">All Requests</button>
+              <button class="history-tab" data-status="Request Received">Received</button>
+              <button class="history-tab" data-status="Diagnosis">Diagnosis</button>
+              <button class="history-tab" data-status="In Repair">In Repair</button>
+              <button class="history-tab" data-status="Ready for Pickup">Ready for Pickup</button>
+              <button class="history-tab" data-status="Completed">Completed</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+              <span id="historyCountBadge" class="badge badge-received">5 Records</span>
+            </div>
+          </div>
+
+          <div class="input-with-icon" style="margin-bottom:1.75rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" id="historySearchInput" class="form-input" placeholder="Search by Repair ID, device brand, customer...">
+          </div>
+
+          <!-- Dynamic List of Cards -->
+          <div id="historyListContainer">
+            <!-- Dynamically populated via history.js -->
+          </div>
+
+          <!-- Empty State -->
+          <div id="historyEmptyState" class="empty-state-card" style="display:none;">
+            <h3>No matching repair records</h3>
+            <p>Try selecting a different filter tab or clear your search keywords.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       Footer
+       ========================================================================= -->
+  <footer class="app-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>
+            <svg style="width:22px;height:22px;color:var(--blue-500)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+            RepairTrack
+          </h3>
+          <p>
+            A modern, client-side repair tracking and diagnostic management web application. 
+            Built as a Web Programming college term project using pure HTML5, CSS3, and ES6 JavaScript.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Customer Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home" data-nav="home">Home Page</a></li>
+            <li><a href="#book" data-nav="book">Book a Repair</a></li>
+            <li><a href="#track" data-nav="track">Track Status</a></li>
+            <li><a href="#history" data-nav="history">Repair Catalog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Admin Portal</h4>
+          <ul class="footer-links">
+            <li><a href="#admin" data-nav="admin">Admin Dashboard</a></li>
+            <li><a href="javascript:void(0)" id="footerResetDemoBtn">Reset Demo Records</a></li>
+            <li><a href="#track?id=RT-1005" data-nav="track">Demo Overdue Alert</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Project Architecture</h4>
+          <p style="font-size:0.85rem;line-height:1.6;color:var(--grey-400)">
+            <strong>Storage:</strong> HTML5 LocalStorage<br>
+            <strong>Routing:</strong> Client Hash SPA<br>
+            <strong>Validation:</strong> Native Regex &amp; DOM<br>
+            <strong>UI Style:</strong> Navy &amp; Light Grey Palette
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 RepairTrack. Web Programming College Project.
+        </div>
+        <div>
+          Demo Admin Credentials: <code>admin / admin123</code>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts: Module Loading Order -->
+  <script src="js/storage.js"></script>
+  <script src="js/track.js"></script>
+  <script src="js/book.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/history.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
